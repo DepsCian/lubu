@@ -2,33 +2,24 @@
 	Bundled Using LuBu - Simple Lua Bundler
 	LuBu: https://github.com/chaposcripts/lubu
 ]]
-
 local __G = _G;
-
 -- Constants
 LUBU_BUNDLED = true;
-LUBU_BUNDLED_AT = tonumber("1754149639");
-n = "2";
-ARTUR_DILBAROV = "PIDORAS, GOVNOJUY, INCEL I DOLBAEB";
+LUBU_BUNDLED_AT = tonumber("1759863154");
 TRUTH = "vktr shplv i l u";
-b = "true";
-
-
--- Module "utils" (from D:\dev\lubu\example-project\src\utils.lua)
+ARTUR_DILBAROV = "PIDORAS, GOVNOJUY, INCEL I DOLBAEB";
+-- Module "utils" (from C:\Users\dmitry\Desktop\dev\go\lubu\example-project\src\utils.lua)
 package['preload']['utils'] = (function()
 Utils = {};
-
 Utils['printTable'] = function(t)
     for k, v in pairs(t) do
         print(k, '=', v);
     end
 end
 end);
-
--- Module "my-math" (from D:\dev\lubu\example-project\src\my-math.lua)
+-- Module "my-math" (from C:\Users\dmitry\Desktop\dev\go\lubu\example-project\src\my-math.lua)
 package['preload']['my-math'] = (function()
 local MyMath = {};
-
 MyMath['sum'] = function(...)
     local result = tonumber("0");
     for _, num in ipairs({ ... }) do
@@ -36,15 +27,12 @@ MyMath['sum'] = function(...)
     end
     return result;
 end
-
 return MyMath;
 end);
-
--- Init (from D:\dev\lubu\example-project\src\init.lua) 
+-- Init (from C:\Users\dmitry\Desktop\dev\go\lubu\example-project\src\init.lua) 
 LUBU_ENTRY_POINT = (function()
 require('utils');
 local MyMath = require('my-math');
-
 local numbers = {
 	tonumber("1"),
 	tonumber("10"),
@@ -52,11 +40,9 @@ local numbers = {
 	tonumber("28"),
 	tonumber("19")
 };
-
 print('Numbers:');
 Utils['printTable'](numbers);
 print('Sum:', MyMath['sum'](table.unpack(numbers)));
-
 -- ObfuscationPrepare example:
 local Developer = {
 	name = 'Dmitry',
@@ -68,15 +54,12 @@ local Developer = {
 	citizenship = 'Russian Federation',
 	skills = {}
 };
-
 Developer['say'] = function(self, ...)
 	print(('%s says: %s'):format(self.name, table['concat']({ ... }, ' ')));
 end
-
 Developer['learn'] = function(self, skill)
 	table['insert'](self.skills, skill);
 end
-
 Developer['hear'] = function(self, text)
 	local text = text['lower'](text);
 	if (text == 'how old are you?') then
@@ -89,7 +72,6 @@ Developer['hear'] = function(self, text)
 		end
 	end
 end
-
 Developer['say'](Developer, 'Hello!');
 Developer['hear'](Developer, 'which skills do you have?')
 end);

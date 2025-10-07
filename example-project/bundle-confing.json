@@ -10,5 +10,6 @@
         "TRUTH": "vktr shplv i l u"
     },
     "prepare_for_obfuscation": true,
-    "remove_comments": false
+    "remove_comments": false,
+    "remove_empty_lines": true
 }

@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/chaposcripts/lubu/config"
@@ -56,8 +57,15 @@ func Generate(basePath string, cfg config.Config) string {
 		code = RemoveComments(code)
 		log.Println("All comments was removed!")
 	}
+	if cfg.RemoveEmptyLines {
+		startSize := len(items)
+		items = slices.DeleteFunc(strings.Split(code, "\n"), func(line string) bool {
+			return len(strings.TrimSpace(line)) == 0
+		})
+		log.Println("Removed", startSize-len(items), "empty lines!")
+	}
 
-	return code
+	return strings.Join(items, "\n")
 }
 
 func Bundle(basePath string, cfg config.Config) {

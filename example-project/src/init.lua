@@ -1,6 +1,11 @@
 require('utils');
 local MyMath = require('my-math');
 
+
+
+
+
+
 local numbers = {
 	1,
 	10,
@@ -48,3 +53,21 @@ end
 
 Developer:say('Hello!');
 Developer:hear('which skills do you have?')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

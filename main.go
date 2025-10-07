@@ -11,13 +11,14 @@ import (
 )
 
 const (
+	VERSION                      = "1.0.7"
 	LUBU_COMMAND_OBFUSCATE_START = "---@LUBU:OBFIGNORE"
 	LUBU_COMMAND_OBFUSCATE_END   = "---@LUBU:ENDOBFIGNORE"
 	LUBU_COMMAND                 = ""
 )
 
 func main() {
-	log.Println("LuBu Started!")
+	log.Println("LuBu Started! Version: " + VERSION)
 	log.Println("Thanks for using LuBu! GitHub: https://github.com/chaposcripts/lubu/")
 	if len(os.Args) < 2 {
 		log.Fatalf("Error, config file not found!")

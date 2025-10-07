@@ -15,6 +15,7 @@ type Config struct {
 	PrepareForObfuscation bool                   `json:"prepare_for_obfuscation"`
 	RemoveComments        bool                   `json:"remove_comments"`
 	Minify                bool                   `json:"minify"`
+	RemoveEmptyLines      bool                   `json:"remove_empty_lines"`
 }
 
 func Read(file string) (cfg Config, err error) {

@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/chaposcripts/lubu/config"
+	"golang.org/x/text/encoding/charmap"
 )
 
 const MODULE_PATTERN = "\n-- Module \"%s\" (from %s)\npackage['preload']['%s'] = (function()\n%s\nend);"
@@ -76,11 +77,18 @@ func Bundle(basePath string, cfg config.Config) {
 	if cfg.Minify {
 		code = MinifyCode(code)
 	}
-	err := os.MkdirAll(outDir, 0755)
+
+	encoder := charmap.Windows1251.NewEncoder()
+	encodedCode, err := encoder.String(code)
+	if err != nil {
+		log.Fatalf("Error encoding to CP1251: %v", err)
+	}
+
+	err = os.MkdirAll(outDir, 0755)
 	if err != nil {
 		log.Fatalf("Error creating directories for output file: %s", err.Error())
 	}
-	err = os.WriteFile(cfg.Out, []byte(code), 0644)
+	err = os.WriteFile(cfg.Out, []byte(encodedCode), 0644)
 	if err != nil {
 		log.Fatalf("Error writing data: %v", err)
 	}
